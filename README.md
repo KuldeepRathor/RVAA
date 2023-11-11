@@ -1,16 +1,3 @@
 # rvaa
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+https://www.figma.com/proto/dr7waO8ZSkBOZ8zQNW8dGt/RVAA?page-id=0%3A1&type=design&node-id=1-4&viewport=246%2C204%2C0.4&t=Qv8qfQAlLwsw5G2r-1&scaling=scale-down&starting-point-node-id=1%3A4&mode=design

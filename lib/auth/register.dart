@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:rvaa/auth/login.dart';
 
 import 'package:rvaa/components/appbar.dart';
 import 'package:rvaa/components/text_field.dart';
@@ -75,7 +76,12 @@ class RegisterPage extends StatelessWidget {
                 height: size.height * 0.07,
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, HomePage.routeName);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const LoginPage(),
+                      ),
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     primary: Colors.black,
@@ -109,8 +115,15 @@ class RegisterPage extends StatelessWidget {
                   ),
                   children: [
                     TextSpan(
-                      onEnter: (event) {},
-                      text: 'Sign up',
+                      onEnter: (event) {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const LoginPage(),
+                          ),
+                        );
+                      },
+                      text: 'Sign in',
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,

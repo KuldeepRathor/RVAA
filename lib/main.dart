@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:rvaa/auth/login.dart';
 import 'package:rvaa/homepage/homepage.dart';
+import 'package:rvaa/splashscreen/splash_screen.dart';
 
 void main() => runApp(const MyApp());
 
@@ -8,6 +10,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(title: 'Material App', home: HomePage());
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Material App',
+      home: SplashScreen(),
+    );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rvaa/components/appbar.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -36,26 +37,7 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
-      appBar: AppBar(
-        title: const Text('Welcome Aman'),
-        backgroundColor: Colors.black,
-        actions: [
-          // SvgPicture.asset('assets/svgs/help_and_support.svg'),
-          CircleAvatar(
-            backgroundColor: Colors.white,
-            child: IconButton(
-              icon: const Icon(
-                Icons.headphones_outlined,
-                color: Colors.black,
-              ),
-              onPressed: () {
-                Navigator.pushNamed(context, '/settings');
-              },
-            ),
-          ),
-          const SizedBox(width: 10),
-        ],
-      ),
+      appBar: const CustomAppBar(),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

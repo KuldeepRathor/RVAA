@@ -1,0 +1,82 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:flutter/material.dart';
+
+class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
+  const CustomAppBar({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return AppBar(
+      title: const Text('Welcome Aman'),
+      backgroundColor: Colors.black,
+      actions: [
+        // SvgPicture.asset('assets/svgs/help_and_support.svg'),
+        CircleAvatar(
+          backgroundColor: Colors.white,
+          child: IconButton(
+            icon: const Icon(
+              Icons.headphones_outlined,
+              color: Colors.black,
+            ),
+            onPressed: () {
+              Navigator.pushNamed(context, '/settings');
+            },
+          ),
+        ),
+        const SizedBox(width: 10),
+      ],
+    );
+  }
+
+  @override
+  // TODO: implement preferredSize
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+}
+
+// ignore: must_be_immutable
+class AuthAppbar extends StatelessWidget {
+  String pageName;
+  AuthAppbar({
+    Key? key,
+    required this.pageName,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Row(
+        children: [
+          IconButton(
+            icon: const Icon(Icons.arrow_back_ios),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
+          const SizedBox(width: 10),
+          Text(
+            pageName,
+            style: const TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const Spacer(),
+          CircleAvatar(
+            backgroundColor: const Color(0xffD9D9D9),
+            child: IconButton(
+              icon: const Icon(
+                Icons.headphones_outlined,
+                color: Colors.black,
+              ),
+              onPressed: () {
+                Navigator.pushNamed(context, '/settings');
+              },
+            ),
+          ),
+          const SizedBox(width: 10),
+        ],
+      ),
+    );
+  }
+}

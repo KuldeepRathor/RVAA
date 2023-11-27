@@ -1,5 +1,7 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:rvaa/auth/register.dart';
 
 import 'package:rvaa/components/appbar.dart';
 import 'package:rvaa/components/custom_bottom_nav.dart';
@@ -107,10 +109,10 @@ class LoginPage extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 20),
-              const Text.rich(
+              Text.rich(
                 TextSpan(
                   text: 'not a user yet?   ',
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 20,
                     color: Colors.black,
                     fontWeight: FontWeight.w500,
@@ -118,11 +120,22 @@ class LoginPage extends StatelessWidget {
                   children: [
                     TextSpan(
                       text: 'Sign up',
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 20,
                         // fontWeight: FontWeight.bold,
                         color: Color(0xff1773B6),
                       ),
+                      recognizer: TapGestureRecognizer()
+                        ..onTap = () {
+                          // Replace this with the action you want to perform on tap
+                          debugPrint('Sign in text tapped!');
+                          // For navigation example:
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const RegisterPage()),
+                          );
+                        },
                     ),
                   ],
                 ),

@@ -110,18 +110,18 @@ class ProfileAppbar extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 14),
       child: Row(
         children: [
-          CircleAvatar(
-            backgroundColor: const Color(0xffF7F7F9),
-            child: IconButton(
-              icon: const Icon(
-                Icons.arrow_back_ios,
-                color: Colors.black,
-              ),
-              onPressed: () {
-                Navigator.pop(context);
-              },
-            ),
-          ),
+          // CircleAvatar(
+          //   backgroundColor: const Color(0xffF7F7F9),
+          //   child: IconButton(
+          //     icon: const Icon(
+          //       Icons.arrow_back_ios,
+          //       color: Colors.black,
+          //     ),
+          //     onPressed: () {
+          //       Navigator.pop(context);
+          //     },
+          //   ),
+          // ),
           const Spacer(),
           Text(
             pageName,

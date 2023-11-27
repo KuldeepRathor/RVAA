@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rvaa/components/appbar.dart';
+import 'package:rvaa/homepage/device_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -58,7 +59,14 @@ class HomePage extends StatelessWidget {
                   borderRadius: BorderRadius.circular(6),
                 ),
               ),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const DevicePage(),
+                  ),
+                );
+              },
               child: SizedBox(
                 width: size.width * 0.35,
                 height: size.height * 0.06,

@@ -10,34 +10,35 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      bottomNavigationBar: BottomNavigationBar(
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.access_time,
-              color: Colors.black87,
-            ),
-            // SvgPicture.asset('assets/svgs/activity.svg'),
-            label: 'Activity',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home,
-              color: Colors.black87,
-            ),
-            // SvgPicture.asset('assets/svgs/home.svg'),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.person,
-              color: Colors.black87,
-            ),
-            // SvgPicture.asset('assets/svgs/profile.svg'),
-            label: 'Profile',
-          ),
-        ],
-      ),
+      // bottomNavigationBar: BottomNavigationBar(
+      //   items: const [
+      //     BottomNavigationBarItem(
+      //       icon: Icon(
+      //         Icons.access_time,
+      //         color: Colors.black87,
+      //       ),
+      //       // SvgPicture.asset('assets/svgs/activity.svg'),
+      //       label: 'Activity',
+      //     ),
+      //     BottomNavigationBarItem(
+      //       icon: Icon(
+      //         Icons.home,
+      //         color: Colors.black87,
+      //       ),
+      //       // SvgPicture.asset('assets/svgs/home.svg'),
+      //       label: 'Home',
+      //     ),
+      //     BottomNavigationBarItem(
+      //       icon: Icon(
+      //         Icons.person,
+      //         color: Colors.black87,
+      //       ),
+      //       // SvgPicture.asset('assets/svgs/profile.svg'),
+      //       label: 'Profile',
+      //     ),
+      //   ],
+      // ),
+
       appBar: const CustomAppBar(),
       body: Center(
         child: Column(
@@ -46,8 +47,8 @@ class HomePage extends StatelessWidget {
             const Text(
               'OOPS!! No device found.',
               style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
+                fontSize: 18,
+                fontWeight: FontWeight.w500,
                 color: Colors.red,
               ),
             ),
@@ -74,8 +75,9 @@ class HomePage extends StatelessWidget {
                     child: Text(
                   'Add Device',
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: 18,
                     color: Colors.white,
+                    fontWeight: FontWeight.w300,
                   ),
                 )),
               ),
@@ -113,8 +115,9 @@ class HomePage extends StatelessWidget {
                     child: Text(
                   'Buy',
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: 18,
                     color: Colors.white,
+                    fontWeight: FontWeight.w300,
                   ),
                 )),
               ),

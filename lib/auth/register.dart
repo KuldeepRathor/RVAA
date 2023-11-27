@@ -1,6 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:rvaa/auth/login.dart';
 
 import 'package:rvaa/components/appbar.dart';
 import 'package:rvaa/components/text_field.dart';
@@ -14,6 +16,17 @@ class RegisterPage extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
 
     return Scaffold(
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: Hero(
+        tag: 'rvaa',
+        child: Padding(
+          padding: const EdgeInsets.only(bottom: 45),
+          child: SvgPicture.asset(
+            'assets/svgs/rvaa_logo.svg',
+            height: size.height * 0.05,
+          ),
+        ),
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -51,21 +64,21 @@ class RegisterPage extends StatelessWidget {
                 fieldName: 'Confirm Password',
                 isObscure: true,
               ),
-              const Padding(
-                padding: EdgeInsets.only(right: 40),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Text(
-                      'forgot password',
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Color(0xff1773B6),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+              // const Padding(
+              //   padding: EdgeInsets.only(right: 40),
+              //   child: Row(
+              //     mainAxisAlignment: MainAxisAlignment.end,
+              //     children: [
+              //       Text(
+              //         'forgot password',
+              //         style: TextStyle(
+              //           fontSize: 14,
+              //           color: Color(0xff1773B6),
+              //         ),
+              //       ),
+              //     ],
+              //   ),
+              // ),
               Container(
                 margin: const EdgeInsets.symmetric(
                   horizontal: 30,
@@ -73,20 +86,28 @@ class RegisterPage extends StatelessWidget {
                 ),
                 width: size.width * 0.8,
                 height: size.height * 0.07,
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, HomePage.routeName);
-                  },
-                  style: ElevatedButton.styleFrom(
-                    primary: Colors.black,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
+                child: Hero(
+                  tag: "signup",
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const LoginPage(),
+                        ),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.black,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
                     ),
-                  ),
-                  child: const Text(
-                    'SIGN UP',
-                    style: TextStyle(
-                      fontSize: 18,
+                    child: const Text(
+                      'SIGN UP',
+                      style: TextStyle(
+                        fontSize: 18,
+                      ),
                     ),
                   ),
                 ),
@@ -102,35 +123,40 @@ class RegisterPage extends StatelessWidget {
               const SizedBox(height: 20),
               Text.rich(
                 TextSpan(
-                  text: 'not a user yet? ',
+                  text: 'Already a user??   ',
                   style: TextStyle(
                     fontSize: 20,
                     color: Colors.black,
+                    fontWeight: FontWeight.w500,
                   ),
                   children: [
                     TextSpan(
-                      onEnter: (event) {},
-                      text: 'Sign up',
+                      text: 'Sign in',
                       style: TextStyle(
                         fontSize: 20,
-                        fontWeight: FontWeight.bold,
+                        // fontWeight: FontWeight.bold,
                         color: Color(0xff1773B6),
                       ),
+                      recognizer: TapGestureRecognizer()
+                        ..onTap = () {
+                          // Replace this with the action you want to perform on tap
+                          print('Sign in text tapped!');
+                          // For navigation example:
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => LoginPage()),
+                          );
+                        },
                     ),
                   ],
                 ),
               ),
+
               SizedBox(
-                height: size.height * 0.1,
-              ),
+                height: size.height * 0.4,
+              )
               // Spacer(),
-              Hero(
-                tag: 'rvaa',
-                child: SvgPicture.asset(
-                  'assets/svgs/rvaa_logo.svg',
-                  height: size.height * 0.05,
-                ),
-              ),
             ],
           ),
         ),

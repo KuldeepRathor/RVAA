@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rvaa/components/appbar.dart';
+import 'package:rvaa/homepage/device_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -9,34 +10,35 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      bottomNavigationBar: BottomNavigationBar(
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.access_time,
-              color: Colors.black87,
-            ),
-            // SvgPicture.asset('assets/svgs/activity.svg'),
-            label: 'Activity',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home,
-              color: Colors.black87,
-            ),
-            // SvgPicture.asset('assets/svgs/home.svg'),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.person,
-              color: Colors.black87,
-            ),
-            // SvgPicture.asset('assets/svgs/profile.svg'),
-            label: 'Profile',
-          ),
-        ],
-      ),
+      // bottomNavigationBar: BottomNavigationBar(
+      //   items: const [
+      //     BottomNavigationBarItem(
+      //       icon: Icon(
+      //         Icons.access_time,
+      //         color: Colors.black87,
+      //       ),
+      //       // SvgPicture.asset('assets/svgs/activity.svg'),
+      //       label: 'Activity',
+      //     ),
+      //     BottomNavigationBarItem(
+      //       icon: Icon(
+      //         Icons.home,
+      //         color: Colors.black87,
+      //       ),
+      //       // SvgPicture.asset('assets/svgs/home.svg'),
+      //       label: 'Home',
+      //     ),
+      //     BottomNavigationBarItem(
+      //       icon: Icon(
+      //         Icons.person,
+      //         color: Colors.black87,
+      //       ),
+      //       // SvgPicture.asset('assets/svgs/profile.svg'),
+      //       label: 'Profile',
+      //     ),
+      //   ],
+      // ),
+
       appBar: const CustomAppBar(),
       body: Center(
         child: Column(
@@ -45,8 +47,8 @@ class HomePage extends StatelessWidget {
             const Text(
               'OOPS!! No device found.',
               style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
+                fontSize: 18,
+                fontWeight: FontWeight.w500,
                 color: Colors.red,
               ),
             ),
@@ -58,7 +60,14 @@ class HomePage extends StatelessWidget {
                   borderRadius: BorderRadius.circular(6),
                 ),
               ),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const DevicePage(),
+                  ),
+                );
+              },
               child: SizedBox(
                 width: size.width * 0.35,
                 height: size.height * 0.06,
@@ -66,8 +75,9 @@ class HomePage extends StatelessWidget {
                     child: Text(
                   'Add Device',
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: 18,
                     color: Colors.white,
+                    fontWeight: FontWeight.w300,
                   ),
                 )),
               ),
@@ -105,8 +115,9 @@ class HomePage extends StatelessWidget {
                     child: Text(
                   'Buy',
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: 18,
                     color: Colors.white,
+                    fontWeight: FontWeight.w300,
                   ),
                 )),
               ),

@@ -19,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen>
     super.initState();
     _controller = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: 1500),
+      duration: const Duration(milliseconds: 1500),
     );
 
     _animation = Tween<double>(
@@ -48,7 +48,7 @@ class _SplashScreenState extends State<SplashScreen>
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Spacer(),
+          const Spacer(),
           Hero(
             tag: "rvaa",
             child: FadeTransition(
@@ -69,7 +69,7 @@ class _SplashScreenState extends State<SplashScreen>
               ),
             ),
           ),
-          Spacer(),
+          const Spacer(),
           const Column(
             children: [
               Text(

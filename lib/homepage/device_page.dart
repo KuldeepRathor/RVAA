@@ -1,12 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rvaa/components/activity_widget.dart';
-
 import 'package:rvaa/components/appbar.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class DevicePage extends StatefulWidget {
-  const DevicePage({super.key});
+  const DevicePage({Key? key}) : super(key: key);
 
   @override
   State<DevicePage> createState() => _DevicePageState();
@@ -14,13 +12,39 @@ class DevicePage extends StatefulWidget {
 
 class _DevicePageState extends State<DevicePage> {
   bool isIgnitionOn = true;
-  List<String> userList = [
-    'Vinayak',
-    'Kuldeep',
-    'Ananya',
-    'Aman',
+  List<User> userList = [
+    User(
+      name: 'Vinayak',
+      phoneNumber: '+91 84259 98424',
+      carName: 'Suzuki Celerio',
+      carNumber: 'MH 46 AT 0001',
+    ),
+    User(
+      name: 'Kuldeep',
+      phoneNumber: '+91 84829 74719',
+      carName: 'Honda Accord',
+      carNumber: 'MH 46 AB 1234',
+    ),
+    User(
+      name: 'Ananya',
+      phoneNumber: '+91 77384 40579',
+      carName: 'Toyota Camry',
+      carNumber: 'MH 46 XY 5678',
+    ),
+    User(
+      name: 'Aman',
+      phoneNumber: '+91 99677 85923',
+      carName: 'Ford Mustang',
+      carNumber: 'MH 46 ZA 9876',
+    ),
   ];
-  String selectedUser = 'Vinayak\'s Car';
+
+  User selectedUser = User(
+    name: 'Vinayak',
+    phoneNumber: '+91 84259 98424',
+    carName: 'Suzuki Celerio',
+    carNumber: 'MH 46 AT 0001',
+  );
 
   void showUserList(BuildContext context) {
     showDialog(
@@ -39,10 +63,10 @@ class _DevicePageState extends State<DevicePage> {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  for (String user in userList)
+                  for (User user in userList)
                     ListTile(
                       title: Text(
-                        '$user\'s Car',
+                        '${user.name}\'s Car',
                         style: const TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w600,
@@ -66,9 +90,8 @@ class _DevicePageState extends State<DevicePage> {
                         color: Colors.black,
                       ),
                       borderRadius: BorderRadius.circular(12),
-                      // color: Colors.grey[300],
                     ),
-                    child: Center(
+                    child: const Center(
                       child: Icon(
                         Icons.add,
                       ),
@@ -107,26 +130,25 @@ class _DevicePageState extends State<DevicePage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                '$selectedUser\'s Car',
+                '${selectedUser.name}\'s Car',
                 style: const TextStyle(
                   fontSize: 28,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               SizedBox(height: size.height * 0.01),
-              const Text.rich(
+              Text.rich(
                 TextSpan(
-                  text: 'MH 46 AT 0001  |  ',
-                  style: TextStyle(
+                  text: '${selectedUser.carNumber}  |  ',
+                  style: const TextStyle(
                     fontSize: 18,
                     color: Colors.grey,
                   ),
                   children: [
                     TextSpan(
-                      text: 'Suzuki Celerio',
-                      style: TextStyle(
+                      text: selectedUser.carName,
+                      style: const TextStyle(
                         fontSize: 18,
-                        // fontWeight: FontWeight.w600,
                       ),
                     ),
                   ],
@@ -147,7 +169,6 @@ class _DevicePageState extends State<DevicePage> {
                           color: Colors.black,
                         ),
                         borderRadius: BorderRadius.circular(18),
-                        // color: Colors.grey[300],
                       ),
                       child: const Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -173,7 +194,6 @@ class _DevicePageState extends State<DevicePage> {
                         color: Colors.green,
                       ),
                       borderRadius: BorderRadius.circular(18),
-                      // color: Colors.grey[300],
                     ),
                     child: const Center(
                       child: Text(
@@ -185,7 +205,7 @@ class _DevicePageState extends State<DevicePage> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 10,
                   ),
                   Hero(
@@ -226,7 +246,6 @@ class _DevicePageState extends State<DevicePage> {
                                 width: 2,
                               ),
                               borderRadius: BorderRadius.circular(14),
-                              // color: Colors.grey[300],
                             ),
                             child: Center(
                               child: Text(
@@ -256,7 +275,6 @@ class _DevicePageState extends State<DevicePage> {
                             child: Column(
                               children: [
                                 Container(
-                                  // height: size.height * 0.1,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(14),
                                     color: Colors.white,
@@ -295,7 +313,7 @@ class _DevicePageState extends State<DevicePage> {
                     ),
                     ActivityWidget(
                       onPressed: () {
-                        launchPhoneDialScreen('8482974719');
+                        launchPhoneDialScreen(selectedUser.phoneNumber);
                       },
                       size: size,
                       activityIcon: const Icon(
@@ -313,4 +331,18 @@ class _DevicePageState extends State<DevicePage> {
       ),
     );
   }
+}
+
+class User {
+  final String name;
+  final String phoneNumber;
+  final String carName;
+  final String carNumber;
+
+  User({
+    required this.name,
+    required this.phoneNumber,
+    required this.carName,
+    required this.carNumber,
+  });
 }

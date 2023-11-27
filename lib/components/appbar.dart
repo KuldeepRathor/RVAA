@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:rvaa/profile/profile_page.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({super.key, this.backButton = false});
@@ -29,7 +30,12 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               color: Colors.black,
             ),
             onPressed: () {
-              Navigator.pushNamed(context, '/settings');
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(
+              //     builder: (context) => const ProfilePage(),
+              //   ),
+              // );
             },
           ),
         ),
@@ -39,7 +45,6 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  // TODO: implement preferredSize
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
 
@@ -77,6 +82,60 @@ class AuthAppbar extends StatelessWidget {
             child: IconButton(
               icon: const Icon(
                 Icons.headphones_outlined,
+                color: Colors.black,
+              ),
+              onPressed: () {
+                Navigator.pushNamed(context, '/settings');
+              },
+            ),
+          ),
+          const SizedBox(width: 10),
+        ],
+      ),
+    );
+  }
+}
+
+// ignore: must_be_immutable
+class ProfileAppbar extends StatelessWidget {
+  String pageName;
+  ProfileAppbar({
+    Key? key,
+    required this.pageName,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 14),
+      child: Row(
+        children: [
+          CircleAvatar(
+            backgroundColor: const Color(0xffF7F7F9),
+            child: IconButton(
+              icon: const Icon(
+                Icons.arrow_back_ios,
+                color: Colors.black,
+              ),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+          ),
+          const Spacer(),
+          Text(
+            pageName,
+            style: const TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const Spacer(),
+          CircleAvatar(
+            backgroundColor: const Color(0xffF7F7F9),
+            child: IconButton(
+              icon: const Icon(
+                Icons.mode_edit_outline_outlined,
                 color: Colors.black,
               ),
               onPressed: () {

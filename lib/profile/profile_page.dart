@@ -97,7 +97,7 @@ class ProfilePage extends StatelessWidget {
                     fieldIcon: Icons.person_outline,
                   ),
                   // Divider(
-                  //   color: Colors.grey,
+                  //   c lor: Colors.grey,
                   //   thickness: 0.2,
                   // ),
                   ProfileFields(

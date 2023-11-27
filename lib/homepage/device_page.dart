@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rvaa/components/activity_widget.dart';
@@ -243,14 +244,16 @@ class _DevicePageState extends State<DevicePage> {
                           child: Column(
                             children: [
                               Container(
-                                height: size.height * 0.1,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(14),
-                                  color: Colors.white,
-                                ),
-                                child:
-                                    Image.asset('assets/images/location.png'),
-                              ),
+                                  height: size.height * 0.1,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(14),
+                                    color: Colors.white,
+                                  ),
+                                  child: CachedNetworkImage(
+                                    imageUrl: 'assets/images/location.png',
+                                  )
+                                  // Image.asset('assets/images/location.png'),
+                                  ),
                               SizedBox(
                                 height: size.height * 0.01,
                               ),
@@ -265,7 +268,7 @@ class _DevicePageState extends State<DevicePage> {
                             ],
                           ),
                         ),
-                      )
+                      ),
                     ],
                   ),
                   SizedBox(

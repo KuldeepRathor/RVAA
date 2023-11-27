@@ -41,7 +41,13 @@ class _DevicePageState extends State<DevicePage> {
                 children: [
                   for (String user in userList)
                     ListTile(
-                      title: Text('$user\'s Car'),
+                      title: Text(
+                        '$user\'s Car',
+                        style: const TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
                       onTap: () {
                         setState(() {
                           selectedUser = user;
@@ -49,6 +55,25 @@ class _DevicePageState extends State<DevicePage> {
                         Navigator.pop(context);
                       },
                     ),
+                  Container(
+                    margin: const EdgeInsets.symmetric(
+                      vertical: 8,
+                      horizontal: 10,
+                    ),
+                    height: 50,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Colors.black,
+                      ),
+                      borderRadius: BorderRadius.circular(12),
+                      // color: Colors.grey[300],
+                    ),
+                    child: Center(
+                      child: Icon(
+                        Icons.add,
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),

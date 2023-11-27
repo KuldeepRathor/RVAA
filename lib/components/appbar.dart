@@ -2,13 +2,23 @@
 import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const CustomAppBar({super.key});
+  const CustomAppBar({super.key, this.backButton = false});
+  final bool backButton;
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: const Text('Welcome Aman'),
+      title: const Text(
+        'Welcome, Aman',
+        style: TextStyle(
+          color: Color(0xFFD9D9D9),
+          fontSize: 18,
+          fontWeight: FontWeight.w400,
+          height: 0,
+        ),
+      ),
       backgroundColor: Colors.black,
+      automaticallyImplyLeading: backButton,
       actions: [
         // SvgPicture.asset('assets/svgs/help_and_support.svg'),
         CircleAvatar(

@@ -1,13 +1,10 @@
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rvaa/components/activity_widget.dart';
-
 import 'package:rvaa/components/appbar.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class DevicePage extends StatefulWidget {
-  const DevicePage({super.key});
+  const DevicePage({Key? key}) : super(key: key);
 
   @override
   State<DevicePage> createState() => _DevicePageState();
@@ -15,13 +12,39 @@ class DevicePage extends StatefulWidget {
 
 class _DevicePageState extends State<DevicePage> {
   bool isIgnitionOn = true;
-  List<String> userList = [
-    'Vinayak',
-    'Kuldeep',
-    'Ananya',
-    'Aman',
+  List<User> userList = [
+    User(
+      name: 'Vinayak',
+      phoneNumber: '+91 84259 98424',
+      carName: 'Suzuki Celerio',
+      carNumber: 'MH 46 AT 0001',
+    ),
+    User(
+      name: 'Kuldeep',
+      phoneNumber: '+91 84829 74719',
+      carName: 'Honda Accord',
+      carNumber: 'MH 46 AB 1234',
+    ),
+    User(
+      name: 'Ananya',
+      phoneNumber: '+91 77384 40579',
+      carName: 'Toyota Camry',
+      carNumber: 'MH 46 XY 5678',
+    ),
+    User(
+      name: 'Aman',
+      phoneNumber: '+91 99677 85923',
+      carName: 'Ford Mustang',
+      carNumber: 'MH 46 ZA 9876',
+    ),
   ];
-  String selectedUser = 'Vinayak\'s Car';
+
+  User selectedUser = User(
+    name: 'Vinayak',
+    phoneNumber: '+91 84259 98424',
+    carName: 'Suzuki Celerio',
+    carNumber: 'MH 46 AT 0001',
+  );
 
   void showUserList(BuildContext context) {
     showDialog(
@@ -40,10 +63,10 @@ class _DevicePageState extends State<DevicePage> {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  for (String user in userList)
+                  for (User user in userList)
                     ListTile(
                       title: Text(
-                        '$user\'s Car',
+                        '${user.name}\'s Car',
                         style: const TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w600,
@@ -67,9 +90,8 @@ class _DevicePageState extends State<DevicePage> {
                         color: Colors.black,
                       ),
                       borderRadius: BorderRadius.circular(12),
-                      // color: Colors.grey[300],
                     ),
-                    child: Center(
+                    child: const Center(
                       child: Icon(
                         Icons.add,
                       ),
@@ -98,208 +120,229 @@ class _DevicePageState extends State<DevicePage> {
     Size size = MediaQuery.of(context).size;
 
     return Scaffold(
-      appBar: const CustomAppBar(),
-      body: Padding(
-        padding: const EdgeInsets.all(28.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              '$selectedUser\'s Car',
-              style: const TextStyle(
-                fontSize: 28,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            SizedBox(height: size.height * 0.01),
-            const Text.rich(
-              TextSpan(
-                text: 'MH 46 AT 0001  |  ',
-                style: TextStyle(
-                  fontSize: 18,
-                  color: Colors.grey,
+      appBar: const CustomAppBar(
+        backButton: true,
+      ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(28.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                '${selectedUser.name}\'s Car',
+                style: const TextStyle(
+                  fontSize: 28,
+                  fontWeight: FontWeight.bold,
                 ),
+              ),
+              SizedBox(height: size.height * 0.01),
+              Text.rich(
+                TextSpan(
+                  text: '${selectedUser.carNumber}  |  ',
+                  style: const TextStyle(
+                    fontSize: 18,
+                    color: Colors.grey,
+                  ),
+                  children: [
+                    TextSpan(
+                      text: selectedUser.carName,
+                      style: const TextStyle(
+                        fontSize: 18,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(height: size.height * 0.02),
+              Row(
                 children: [
-                  TextSpan(
-                    text: 'Suzuki Celerio',
-                    style: TextStyle(
-                      fontSize: 18,
-                      // fontWeight: FontWeight.w600,
+                  GestureDetector(
+                    onTap: () {
+                      showUserList(context);
+                    },
+                    child: Container(
+                      height: size.height * 0.04,
+                      width: size.width * 0.45,
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Colors.black,
+                        ),
+                        borderRadius: BorderRadius.circular(18),
+                      ),
+                      child: const Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Text(
+                            'Other Vehicles',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          Icon(Icons.keyboard_arrow_down_outlined)
+                        ],
+                      ),
+                    ),
+                  ),
+                  SizedBox(width: size.width * 0.02),
+                  Container(
+                    height: size.height * 0.04,
+                    width: size.width * 0.2,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Colors.green,
+                      ),
+                      borderRadius: BorderRadius.circular(18),
+                    ),
+                    child: const Center(
+                      child: Text(
+                        'online',
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.green,
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  Hero(
+                    tag: "clock",
+                    child: IconButton(
+                      onPressed: () {},
+                      icon: const Icon(
+                        Icons.settings_outlined,
+                        size: 35,
+                      ),
                     ),
                   ),
                 ],
               ),
-            ),
-            SizedBox(height: size.height * 0.02),
-            Row(
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    showUserList(context);
-                  },
-                  child: Container(
-                    height: size.height * 0.04,
-                    width: size.width * 0.45,
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        color: Colors.black,
-                      ),
-                      borderRadius: BorderRadius.circular(18),
-                      // color: Colors.grey[300],
-                    ),
-                    child: const Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              SizedBox(height: size.height * 0.02),
+              Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
-                          'Other Vehicles',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                        Icon(Icons.keyboard_arrow_down_outlined)
-                      ],
-                    ),
-                  ),
-                ),
-                SizedBox(width: size.width * 0.02),
-                Container(
-                  height: size.height * 0.04,
-                  width: size.width * 0.2,
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Colors.green,
-                    ),
-                    borderRadius: BorderRadius.circular(18),
-                    // color: Colors.grey[300],
-                  ),
-                  child: const Center(
-                    child: Text(
-                      'online',
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.green,
-                      ),
-                    ),
-                  ),
-                ),
-                IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.settings_outlined,
-                    size: 35,
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(height: size.height * 0.02),
-            Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            isIgnitionOn = !isIgnitionOn;
-                          });
-                        },
-                        child: Container(
-                          height: size.height * 0.15,
-                          width: size.width * 0.33,
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              color: isIgnitionOn ? Colors.green : Colors.red,
-                              width: 2,
-                            ),
-                            borderRadius: BorderRadius.circular(14),
-                            // color: Colors.grey[300],
-                          ),
-                          child: Center(
-                            child: Text(
-                              isIgnitionOn ? 'Ignition On' : 'Ignition Off',
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w600,
+                        GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              isIgnitionOn = !isIgnitionOn;
+                            });
+                          },
+                          child: Container(
+                            height: 135,
+                            width: 135,
+                            decoration: BoxDecoration(
+                              color: isIgnitionOn
+                                  ? Colors.green.withOpacity(0.3)
+                                  : null,
+                              border: Border.all(
                                 color: isIgnitionOn ? Colors.green : Colors.red,
+                                width: 2,
+                              ),
+                              borderRadius: BorderRadius.circular(14),
+                            ),
+                            child: Center(
+                              child: Text(
+                                isIgnitionOn ? 'Ignition On' : 'Ignition Off',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w600,
+                                  color:
+                                      isIgnitionOn ? Colors.green : Colors.red,
+                                ),
                               ),
                             ),
                           ),
                         ),
-                      ),
-                      Container(
-                        height: size.height * 0.15,
-                        width: size.width * 0.33,
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            color: Colors.black,
+                        Container(
+                          height: 135,
+                          width: 135,
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: Colors.black,
+                            ),
+                            borderRadius: BorderRadius.circular(14),
+                            color: Colors.grey[300],
                           ),
-                          borderRadius: BorderRadius.circular(14),
-                          color: Colors.grey[300],
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Column(
-                            children: [
-                              Container(
-                                  height: size.height * 0.1,
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Column(
+                              children: [
+                                Container(
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(14),
                                     color: Colors.white,
                                   ),
-                                  child: CachedNetworkImage(
-                                    imageUrl: 'assets/images/location.png',
-                                  )
-                                  // Image.asset('assets/images/location.png'),
-                                  ),
-                              SizedBox(
-                                height: size.height * 0.01,
-                              ),
-                              const Text(
-                                'Location Activity',
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w600,
-                                  color: Colors.black,
+                                  child:
+                                      Image.asset('assets/images/location.png'),
                                 ),
-                              ),
-                            ],
+                                SizedBox(
+                                  height: size.height * 0.01,
+                                ),
+                                const Text(
+                                  'Location Activity',
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
+                        )
+                      ],
+                    ),
+                    SizedBox(
+                      height: size.height * 0.04,
+                    ),
+                    ActivityWidget(
+                      onPressed: () {},
+                      size: size,
+                      activityName: 'Recent Activity',
+                      activityIcon: const Icon(
+                        Icons.history_outlined,
+                        size: 35,
                       ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: size.height * 0.04,
-                  ),
-                  ActivityWidget(
-                    onPressed: () {},
-                    size: size,
-                    activityName: 'Recent Activity',
-                    activityIcon: const Icon(
-                      Icons.history_outlined,
-                      size: 35,
                     ),
-                  ),
-                  ActivityWidget(
-                    onPressed: () {
-                      launchPhoneDialScreen('8482974719');
-                    },
-                    size: size,
-                    activityIcon: const Icon(
-                      Icons.phone_outlined,
-                      size: 35,
+                    ActivityWidget(
+                      onPressed: () {
+                        launchPhoneDialScreen(selectedUser.phoneNumber);
+                      },
+                      size: size,
+                      activityIcon: const Icon(
+                        Icons.phone_outlined,
+                        size: 35,
+                      ),
+                      activityName: 'Call Driver',
                     ),
-                    activityName: 'Call Driver',
-                  ),
-                ],
-              ),
-            )
-          ],
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
   }
+}
+
+class User {
+  final String name;
+  final String phoneNumber;
+  final String carName;
+  final String carNumber;
+
+  User({
+    required this.name,
+    required this.phoneNumber,
+    required this.carName,
+    required this.carNumber,
+  });
 }

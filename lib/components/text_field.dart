@@ -30,36 +30,42 @@ class _TextfieldsWidgetState extends State<TextfieldsWidget> {
         horizontal: 30.0,
         vertical: 10,
       ),
-      child: TextFormField(
-        keyboardType: widget.keyboardType,
-        obscureText: widget.isObscure && obscureText,
-        decoration: InputDecoration(
-          border: const OutlineInputBorder(
-            borderRadius: BorderRadius.all(
-              Radius.circular(12),
+      child: SizedBox(
+        height: 50,
+        child: TextFormField(
+          keyboardType: widget.keyboardType,
+          obscureText: widget.isObscure && obscureText,
+          textAlignVertical: TextAlignVertical.center,
+          decoration: InputDecoration(
+            contentPadding: EdgeInsets.symmetric(vertical: 0, horizontal: 15),
+            border: const OutlineInputBorder(
+              borderRadius: BorderRadius.all(
+                Radius.circular(12),
+              ),
             ),
-          ),
-          hintText: widget.fieldName,
-          hintStyle: const TextStyle(
-            fontSize: 16,
-            color: Colors.grey,
-          ),
-          prefixIcon: widget.iconName,
-          suffixIcon: widget.isObscure
-              ? Padding(
-                  padding: const EdgeInsets.only(right: 20),
-                  child: InkWell(
-                    onTap: () => setState(() => obscureText = !obscureText),
-                    child: Icon(
-                      obscureText
-                          ? Icons.visibility_off_outlined
-                          : Icons.visibility_outlined,
-                      color: Colors.grey,
+            hintText: widget.fieldName,
+            hintStyle: const TextStyle(
+              fontSize: 16,
+              color: Colors.grey,
+            ),
+            prefixIcon: widget.iconName,
+            suffixIcon: widget.isObscure
+                ? Padding(
+                    padding: const EdgeInsets.only(right: 20),
+                    child: InkWell(
+                      onTap: () => setState(() => obscureText = !obscureText),
+                      child: Icon(
+                        obscureText
+                            ? Icons.visibility_off_outlined
+                            : Icons.visibility_outlined,
+                        color: Colors.grey,
+                      ),
                     ),
-                  ),
-                )
-              : null,
-          suffixIconConstraints: BoxConstraints(maxHeight: size.height * 0.05),
+                  )
+                : null,
+            suffixIconConstraints:
+                BoxConstraints(maxHeight: size.height * 0.05),
+          ),
         ),
       ),
     );

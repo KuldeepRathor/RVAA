@@ -1,6 +1,7 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 
-// ignore: must_be_immutable
 class ActivityWidget extends StatelessWidget {
   String activityName;
   Icon activityIcon;
@@ -39,8 +40,7 @@ class ActivityWidget extends StatelessWidget {
                 SizedBox(width: size.width * 0.02),
                 Text(
                   activityName,
-                  //
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w600,
                   ),

@@ -1,6 +1,5 @@
 import 'package:animated_notch_bottom_bar/animated_notch_bottom_bar/animated_notch_bottom_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:rvaa/components/appbar.dart';
 import 'package:rvaa/homepage/homepage.dart';
 import 'package:rvaa/profile/profile_page.dart';
@@ -101,7 +100,7 @@ class _CustomBottomNavState extends State<CustomBottomNav> {
                 ],
                 onTap: (index) {
                   /// perform action on tab change and to update pages you can update pages without pages
-                  print('current selected index $index');
+                  debugPrint('current selected index $index');
                   _pageController.jumpToPage(index);
                 },
               ),
@@ -116,7 +115,6 @@ class RecentsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return const Scaffold(
       appBar: CustomAppBar(),
       body: Center(
@@ -150,43 +148,43 @@ class RecentsScreen extends StatelessWidget {
   }
 }
 
-class Page2 extends StatelessWidget {
-  const Page2({Key? key}) : super(key: key);
+// class Page2 extends StatelessWidget {
+//   const Page2({Key? key}) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        color: Colors.green, child: const Center(child: Text('Page 2')));
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return Container(
+//         color: Colors.green, child: const Center(child: Text('Page 2')));
+//   }
+// }
 
-class Page3 extends StatelessWidget {
-  const Page3({Key? key}) : super(key: key);
+// class Page3 extends StatelessWidget {
+//   const Page3({Key? key}) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        color: Colors.red, child: const Center(child: Text('Page 3')));
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return Container(
+//         color: Colors.red, child: const Center(child: Text('Page 3')));
+//   }
+// }
 
-class Page4 extends StatelessWidget {
-  const Page4({Key? key}) : super(key: key);
+// class Page4 extends StatelessWidget {
+//   const Page4({Key? key}) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        color: Colors.blue, child: const Center(child: Text('Page 4')));
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return Container(
+//         color: Colors.blue, child: const Center(child: Text('Page 4')));
+//   }
+// }
 
-class Page5 extends StatelessWidget {
-  const Page5({Key? key}) : super(key: key);
+// class Page5 extends StatelessWidget {
+//   const Page5({Key? key}) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        color: Colors.lightGreenAccent,
-        child: const Center(child: Text('Page 5')));
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return Container(
+//         color: Colors.lightGreenAccent,
+//         child: const Center(child: Text('Page 5')));
+//   }
+// }

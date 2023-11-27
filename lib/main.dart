@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rvaa/homepage/device_page.dart';
-import 'package:rvaa/homepage/homepage.dart';
+import 'package:flutter/services.dart';
 import 'package:rvaa/splashscreen/splash_screen.dart';
 
 void main() => runApp(const MyApp());
@@ -10,6 +9,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+        statusBarColor: Colors.black,
+      ),
+    );
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Material App',

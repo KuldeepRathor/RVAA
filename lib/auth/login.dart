@@ -1,11 +1,9 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import 'package:rvaa/components/appbar.dart';
 import 'package:rvaa/components/custom_bottom_nav.dart';
 import 'package:rvaa/components/text_field.dart';
-import 'package:rvaa/homepage/homepage.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -81,7 +79,7 @@ class LoginPage extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => CustomBottomNav(),
+                          builder: (context) => const CustomBottomNav(),
                         ),
                       );
                     },
@@ -109,10 +107,10 @@ class LoginPage extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 20),
-              Text.rich(
+              const Text.rich(
                 TextSpan(
                   text: 'not a user yet?   ',
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 20,
                     color: Colors.black,
                     fontWeight: FontWeight.w500,
@@ -120,7 +118,7 @@ class LoginPage extends StatelessWidget {
                   children: [
                     TextSpan(
                       text: 'Sign up',
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 20,
                         // fontWeight: FontWeight.bold,
                         color: Color(0xff1773B6),

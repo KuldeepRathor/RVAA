@@ -45,7 +45,6 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  // TODO: implement preferredSize
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
 
@@ -97,6 +96,7 @@ class AuthAppbar extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class ProfileAppbar extends StatelessWidget {
   String pageName;
   ProfileAppbar({
@@ -107,17 +107,22 @@ class ProfileAppbar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 14),
       child: Row(
-        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          IconButton(
-            icon: const Icon(Icons.arrow_back_ios),
-            onPressed: () {
-              Navigator.pop(context);
-            },
+          CircleAvatar(
+            backgroundColor: const Color(0xffF7F7F9),
+            child: IconButton(
+              icon: const Icon(
+                Icons.arrow_back_ios,
+                color: Colors.black,
+              ),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
           ),
-          Spacer(),
+          const Spacer(),
           Text(
             pageName,
             style: const TextStyle(
